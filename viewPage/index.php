@@ -9,9 +9,9 @@
       <th scope="col">Name</th>
       <th scope="col">Surname</th>
       <th scope="col">Balance</th>
-      <th scope="col">Removal</th>
-      <th scope="col">Add Funds</th>
       <th scope="col">Withdraw Funds</th>
+      <th scope="col">Add Funds</th>
+      <th scope="col">Removal</th>
     </tr>
   </thead>
   <tbody>
@@ -27,10 +27,10 @@
       <td>".$user -> name."</td>
       <td>".$user -> surname."</td>
       <td>".$user -> balance."</td>
-      <td><form action=\"delete/".$user -> uniqID."\" method=\"post\">
-      <button type=\"submit\" class=\"btn btn-primary\">Delete Account</button></form></td>
       <td><a class=\"btn btn-primary\" href=\"edit2/".$user -> uniqID."\" role=\"button\">Withdraw funds</a></td>
       <td><a class=\"btn btn-primary\" href=\"edit/".$user -> uniqID."\" role=\"button\">Add Funds</a></td>
+      <td><form action=\"delete/".$user -> uniqID."\" method=\"post\">
+      <button type=\"submit\" class=\"btn btn-primary\">Delete Account</button></form></td>
     </tr>" ;
   } 
    ?>

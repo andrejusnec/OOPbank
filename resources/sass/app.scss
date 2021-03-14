@@ -13,12 +13,12 @@ body
     padding: 20px;
 }
 .inputas {
-    width: 60%;
+    width: 62%;
     height: 35px;
     font-size: 18px;
 }
 .inputasT {
-    width: 60%;
+    width: 62%;
     line-height: 40px;
     font-size: 18px;
 }
@@ -47,9 +47,13 @@ body * {
     text-align: center;
     font-weight: bold;
     color: #2c3e50;
+    color: #ff7b25;
     padding-top: 40px;
-} .bg {
+    text-shadow: 1px 1px 1px grey, 
+                 3px 3px 5px #2c3e50;
+  } .bg {
     background-image: linear-gradient(to bottom right, #bdc3c7, #2c3e50);
+   
 }
 .topnav {
     background-color: #333;
@@ -94,6 +98,7 @@ body * {
 .list-group-item {
     background-color: transparent;
     border: none;
+    padding: .5rem 0rem;
 }
 .newForm {
     display: inline-block;
@@ -103,10 +108,10 @@ body * {
 }
 .border-form {
     border: 2px solid black;
-    width: 360px;
+    width: 340px;
     margin: 20px auto;
     padding-top: 20px;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     background-color: blanchedalmond;
 } #testID {
     background-image: url(C:\xampp\htdocs\php_proj\bank\img\img.png);

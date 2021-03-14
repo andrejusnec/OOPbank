@@ -97,7 +97,7 @@ class Json {
         }
         return $str;
     }
-    function accountExist() {
+    public function accountExist() {
         $users = $this -> data;
         $accID = $this -> generateAcc();
         if(!empty(DIR.'/data/users.json') && $users !== []) { //jeigu failas yra
@@ -130,7 +130,7 @@ class Json {
         }
     } return $notZero;
     }
-    function isIDmatch($id) {
+    public function isIDmatch($id) {
         $goodID = false;
         $pattern = "/^[3-6](\d{2})(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{4}$/";
         if(preg_match($pattern, $id) == 1) {
