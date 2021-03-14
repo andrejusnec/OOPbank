@@ -1,6 +1,10 @@
 <?php require DIR.'/viewPage/top.php'; ?>
 <?php require DIR.'/viewPage/menu.php'; ?>
 <h1 class="h1"><?= $pageTitle ?></h1>
+<?php if(isset($_SESSION['success'])) {
+  echo $_SESSION['success'];
+  unset($_SESSION['success']);
+} ?>
 <table class="table">
   <thead>
     <tr>

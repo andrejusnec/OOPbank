@@ -1,6 +1,12 @@
 <?php require DIR.'/viewPage/top.php'; ?>
 <?php require DIR.'/viewPage/menu.php'; ?>
 <h1 class="h1"><?= $pageTitle ?></h1>
+<?php if(isset($errorMsg)) {
+    echo $errorMsg;
+    unset($errorMsg);
+    unset($pageTitle);
+}
+?>
 <h1><?= $user -> name.' '.$user -> surname ?> account</h1><br>
 <h3>Account's ID# <?= $user -> uniqID ?> Current balance: <?= $user -> balance ?> EUR</h3><br>
 <form action="<?= URL ?>withdraw/<?= $user -> uniqID ?>" method="post">
@@ -9,7 +15,8 @@
   <input type="text" class="form-control" name="funds" aria-label="Amount (to the nearest dollar)">
 </div>
 <li id="color" class="list-group-item flex-fill"><button class="btn btn-primary" 
-name ="addbtn" type="submit">Withdraw</button></li>
+name ="addbtn" type="submit">Withdraw</button>
+<div style="display:inline-block; margin-left:10px"><a class="btn btn-primary" href="<?= URL ?>">Main menu</a></div></li>
+
 </form>
-</div>
 <?php require DIR.'/viewPage/bottom.php'; ?>

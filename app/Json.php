@@ -138,13 +138,15 @@ class Json {
         }
         return $goodID;
     }
-    function ifFloat($number) {
+    public function ifFloat($number) {
         if(str_contains($number,'.')) {
         $num = strval($number);
         $arr = explode('.', $num);
+        _d($arr[1]);
+        _d(strlen($arr[1]));
         if(strlen($arr[1]) > 2) {
-            $num = round($number, 2);
-            return $num;
+            $number = round($number, 2);
+            return $number;
         }else {
             return $number;
         }
@@ -152,20 +154,36 @@ class Json {
         return $number;
     }
     }
-    
-    function randomID() : int {
-        $memory = [];
-        $randomID = rand(1,500);
-        $flag = true;
-        while($flag) {
-            if(in_array($randomID, $memory)) {
-                $randomID = rand(1,500); 
-            } else {
-                $memory[] = $randomID;
-                $flag = false;
+    public function chechID($id) :bool {
+        $goodID = false;
+        $arr  = array_map('intval', str_split($id));
+        $summ = ($arr[0] * 1) + ($arr[1] * 2) + ($arr[2] * 3) + ($arr[3] * 4) + ($arr[4] * 5) + ($arr[5] * 6) + ($arr[6] * 7) +
+        ($arr[7] * 8) + ($arr[8] * 9) + ($arr[9] * 1);
+        if($summ % 11 == 10) {
+            $summ = ($arr[0] * 3) + ($arr[1] * 4) + ($arr[2] * 5) + ($arr[3] * 6) + ($arr[4] * 7) + ($arr[5] * 8) + ($arr[6] * 9) +
+        ($arr[7] * 1) + ($arr[8] * 2) + ($arr[9] * 3);
+            if($summ % 11 != 10) {
+                if($summ % 11 == $arr[10]) {
+                    $goodID = true;
+                }
+            }
+            if($summ % 11 == 10 && $arr[10] == 0) {
+                $goodID = true;
+            }
+        }else {
+            $goodID = true;
+        }
+        return $goodID;
+    }
+    public function isIdUniq(int $idNumber) : bool {
+        $IdUniq = true;
+        foreach($this -> data as $user) {
+            if($user -> idNumber == $idNumber) {
+                $IdUniq = false;
+                return $IdUniq;
             }
         }
-        return $randomID;
+        return $IdUniq;
     }
 }
 ?>

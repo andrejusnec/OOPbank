@@ -14,4 +14,4 @@ integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOn
 </head>
 <body class="bg">
     <div class="allContent">
-        <div class="content">
+        <div class="content center">

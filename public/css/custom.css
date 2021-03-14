@@ -183,12 +183,10 @@
   position: relative;
   min-height: 100vh;
 }
-
-.content {
+.allContent .content {
   padding-bottom: 36px;
 }
-
-.copyRight {
+.allContent .copyRight {
   text-align: center;
   position: absolute;
   bottom: 0;
@@ -220,4 +218,38 @@
 
 .padding20 {
   padding-top: 20px;
+}
+
+.MMmsg {
+  color: green;
+  text-align: center;
+  font-size: 18px;
+  width: 300px;
+  margin: auto;
+  border-bottom: 2px solid black;
+  padding: 5px;
+  box-shadow: darkorange 0px 2px;
+}
+
+/********************************Bootstrap overwrites*******************************/
+.center {
+  text-align: center;
+}
+
+input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n+3),
+.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+  width: 40px;
+  display: inline-block;
+}
+
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  margin-left: -5px;
+}
+
+.input-group {
+  display: inline-block;
+}
+
+.input-group > .form-control {
+  display: inline-block;
 }

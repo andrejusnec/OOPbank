@@ -1,6 +1,5 @@
 <?php require DIR.'/viewPage/top.php'; ?>
-<?php require DIR.'/viewPage/menu.php';?>
-<?php ?>;
+<?php require DIR.'/viewPage/menu.php'; ?>
 <h1 class="h1 padding20"><?= $pageTitle ?></h1>
 <?php if(isset($errorMsg)) {
     echo $errorMsg;
@@ -10,7 +9,7 @@
 ?>
 <form class="newForm" action="<?= URL ?>store" method="post">
     <div class="border-form img">
-        <h1 class="h1 padding20">Sign up</h2>
+        <h1 class="h1 padding20">New user</h2>
 <label class="inputasT" for="name">Name</label><br>
 <input class="inputas" placeholder="Jon"  type="text" name="name" id=""><br>
 <label class="inputasT" for="surname">Surname</label><br>
