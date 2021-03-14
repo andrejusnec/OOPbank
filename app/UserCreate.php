@@ -58,7 +58,7 @@ class UserCreate
         }
     public function edit(int $id)
     {   if(!$id == null) {
-        $pageTitle = 'Add funds';
+        $pageTitle = 'Top up balance';
         $user = Json::getDB()->getUser($id);
         require DIR . '/viewPage/addFunds.php';
         } else {

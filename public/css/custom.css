@@ -202,7 +202,7 @@
 
 .copyRight > p > a {
   text-decoration: none;
-  color: #ff7b25;
+  color: #F8F8FF;
   text-align: center;
 }
 
@@ -229,6 +229,17 @@
   border-bottom: 2px solid black;
   padding: 5px;
   box-shadow: darkorange 0px 2px;
+}
+
+.content-border {
+  border: 2px solid;
+  margin: auto;
+  margin-top: 50px;
+  max-width: 400px;
+  padding-bottom: 40px;
+  -o-border-image: linear-gradient(130deg, #2c3e50, #bdc3c7, #2c3e50);
+     border-image: linear-gradient(130deg, #2c3e50, #bdc3c7, #2c3e50);
+  border-image-slice: 1;
 }
 
 /********************************Bootstrap overwrites*******************************/

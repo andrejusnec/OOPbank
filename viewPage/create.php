@@ -17,7 +17,7 @@
 <label class="inputasT" for="idNumber">Account number</label><br>
 <input class="inputas" placeholder="<?php $accountID = Json::getDB() -> accountExist(); $_SESSION['readonly'] = $accountID; echo $_SESSION['readonly'];?>"
  type="text" name="accNum" id="" readonly><br>
-<label class="inputasT" for="idNumber">Personal identification code</label><br>
+<label class="inputasT" for="idNumber">Personal ID</label><br>
 <input class="inputas" placeholder="11 digits"  type="text" name="idNumber" id=""><br><br>
 <li id="color" class="list-group-item flex-fill"><button class="btn btn-primary" name ="create" type="submit">Create</button></li>
 </div>
