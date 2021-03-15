@@ -69,6 +69,10 @@ class UserCreate
     }
     public function addFunds(int $id)
     {
+        if(!isset($_POST['funds'])) {
+            require DIR . '/viewPage/addFunds.php';
+            die;
+        }
         $user = Json::getDB()->getUser($id);
         if($_POST['funds'] > 0 && $_POST['funds'] < 100000000){
         $user->balance += round((float) $_POST['funds'], 2);
@@ -96,6 +100,10 @@ class UserCreate
     public function withdraw(int $id)
     {  
     $user = Json::getDB()->getUser($id);
+    if(!isset($_POST['funds'])) {
+        require DIR . '/viewPage/withdraw.php';
+        die;
+    }
     if(is_numeric($_POST['funds'])) {
         $number = Json::getDB() -> ifFloat($_POST['funds']);
         if($user->balance < $number  || $number <= 0) {

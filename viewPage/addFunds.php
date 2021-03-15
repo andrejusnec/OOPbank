@@ -2,7 +2,7 @@
 <?php require DIR.'/viewPage/top.php'; ?>
 <?php require DIR.'/viewPage/menu.php'; ?>
 <div class="content-border">
-<h1 class="h1"><?= $pageTitle ?></h1>
+<h1 class="h1"><?= $pageTitle ?? 'Top up balance' ?></h1>
 <?php if(isset($errorMsg)) {
     echo $errorMsg;
     unset($errorMsg);
