@@ -39,7 +39,7 @@ class UserCreate
         if(Json::getDB() -> isIdUniq($_POST['idNumber'])) {
             if(Json::getDB() -> isIDmatch($_POST['idNumber']) && Json::getDB() -> chechID($_POST['idNumber'])){
                 $user->idNumber = $_POST['idNumber'];
-                $_SESSION['success'] = '<div class="MMmsg">Account successfully created</div>';
+                $_SESSION['success'] = '<div class="MMmsg">Account successfully created <i class="fa fa-check" aria-hidden="true"></i></div>';
             } else {
                 $pageTitle = 'ERROR';
                 $errorMsg = '<h3 class="errorMsg">You have enter bad ID</h3>';
@@ -77,7 +77,7 @@ class UserCreate
         if($_POST['funds'] > 0 && $_POST['funds'] < 100000000){
         $user->balance += round((float) $_POST['funds'], 2);
         Json::getDB()->update($user);
-        $_SESSION['success'] = '<div class="MMmsg">'.$_POST['funds'].' EUR were successfully added to ID # '.$user-> uniqID.' account</div>';
+        $_SESSION['success'] = '<div class="MMmsg">'.$_POST['funds'].' EUR were successfully added to ID # '.$user-> uniqID.' account <i class="fa fa-check" aria-hidden="true"></i></div>';
         header('Location: ' . URL);
         die;
         } else {
@@ -115,7 +115,7 @@ class UserCreate
         $user->balance -= $number;
         $user->balance = round($user->balance, 2);
         Json::getDB()->update($user);
-        $_SESSION['success'] = '<div class="MMmsg">'.$_POST['funds'].' EUR were successfully withdrawn from ID # '.$user-> uniqID.' account</div>';
+        $_SESSION['success'] = '<div class="MMmsg">'.$_POST['funds'].' EUR were successfully withdrawn from ID # '.$user-> uniqID.' account <i class="fa fa-check" aria-hidden="true"></i></div>';
         header('Location: ' . URL);
         die;
         }
@@ -132,7 +132,7 @@ class UserCreate
             $user = Json::getDB()->getUser($id);
             if ($user->balance == 0) {
                 $_SESSION['success'] = '<div class="MMmsg">'.$user -> name.' '. $user -> surname. ' ID # '. $user-> uniqID.
-                ' has been successfully deleted</div>';
+                ' has been successfully deleted <i class="fa fa-check" aria-hidden="true"></i></div>';
                 Json::getDB()->deleteUser($id);
                 header('Location: ' . URL);
                 die;

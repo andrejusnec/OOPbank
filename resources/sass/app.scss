@@ -3,8 +3,8 @@
     font-style: normal;
     font-weight: 400;
     src: local(''),
-         url('../../fonts/nanum-gothic-v17-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('../../fonts/nanum-gothic-v17-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+         url('../../fonts/nanum-gothic-v17-latin-regular.woff2') format('woff2'), 
+         url('../../fonts/nanum-gothic-v17-latin-regular.woff') format('woff'); 
          font-display: swap;         
   }
 html, body
@@ -77,6 +77,14 @@ body * {
   
   /* Style the links inside the navigation bar */
   .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .user {
     float: left;
     color: #f2f2f2;
     text-align: center;

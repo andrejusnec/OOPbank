@@ -68,12 +68,15 @@
 .login-form {
   display: flex;
   flex-direction: column;
+  border: 2px solid;
   padding: 0 40px;
   padding-top: 20px;
   padding-bottom: 20px;
   color: white;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  -o-border-image: linear-gradient(130deg, #bdc3c7, #2c3e50, #bdc3c7);
+     border-image: linear-gradient(130deg, #bdc3c7, #2c3e50, #bdc3c7);
+  border-image-slice: 1;
   box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109), 0 1px 1px rgba(128, 128, 128, 0.155), 0 2.1px 2.1px rgba(128, 128, 128, 0.195), 0 4.4px 4.4px rgba(128, 128, 128, 0.241), 0 12px 12px rgba(128, 128, 128, 0.35);
 }
 .login-form h1 {
@@ -89,6 +92,14 @@
 }
 .login-form label {
   margin-left: 10px;
+}
+.login-form .form-input-material input {
+  color: white;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  cursor: pointer;
 }
 
 /**********BUTTON*********/
@@ -221,14 +232,19 @@
 }
 
 .MMmsg {
-  color: green;
+  color: black;
   text-align: center;
   font-size: 18px;
   width: 300px;
   margin: auto;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
   padding: 5px;
-  box-shadow: darkorange 0px 2px;
+  padding-bottom: 0;
+  margin-bottom: 5px;
+}
+.MMmsg i {
+  color: limegreen;
+  font-size: 22px;
 }
 
 .content-border {
@@ -245,6 +261,10 @@
 /********************************Bootstrap overwrites*******************************/
 .center {
   text-align: center;
+}
+
+.table > :not(:last-child) > :last-child > * {
+  border-bottom-color: #dee2e6;
 }
 
 input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n+3),
