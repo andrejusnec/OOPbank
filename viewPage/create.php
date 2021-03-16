@@ -15,7 +15,7 @@
 <label class="inputasT" for="surname">Surname</label><br>
 <input class="inputas" placeholder="Smith" pattern="([a-zA-Z]{3,30}\s*)+" type="text" name="surname" id=""><br>
 <label class="inputasT" for="idNumber">Account number</label><br>
-<input class="inputas" placeholder="<?php $accountID = Json::getDB() -> accountExist(); $_SESSION['readonly'] = $accountID; echo $_SESSION['readonly'];?>"
+<input class="inputas" placeholder="<?php $accountID = Bank\Json::getDB() -> accountExist(); $_SESSION['readonly'] = $accountID; echo $_SESSION['readonly'];?>"
  type="text" name="accNum" id="" readonly><br>
 <label class="inputasT" for="idNumber">Personal ID</label><br>
 <input class="inputas" placeholder="11 digits"  type="text" name="idNumber" id=""><br><br>

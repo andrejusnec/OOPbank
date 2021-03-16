@@ -1,5 +1,8 @@
 <?php
-class UserCreate
+namespace Bank;
+use Vartotojas\User;
+
+class UserController
 {
 
     public function index()

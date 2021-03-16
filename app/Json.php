@@ -1,4 +1,6 @@
-<?php 
+<?php
+namespace Bank;
+use Vartotojas\User;
 
 class Json {
 
@@ -6,7 +8,7 @@ class Json {
     private $data;
     
     public static function getDB() {
-        return self::$jsonObject ?? self::$jsonObject = new self; //grazina objektas, jeigu jo nera , tai sukuriu nauja ir priskiriu
+        return self::$jsonObject ?? self::$jsonObject = new self; //grazina objekta, jeigu jo nera , tai sukuriu nauja ir priskiriu
     }
     private function __construct() {
         if(!file_exists(DIR.'/data/users.json')) {
@@ -17,7 +19,8 @@ class Json {
         $this -> data = json_decode($dataFile); //1 reik nereik??
     }
     public function __destruct() {
-        file_put_contents(DIR.'/data/users.json', json_encode($this -> data));
+        file_put_contents(DIR.'/data/users.json', json_encode($this -> data)); // kai objektas pabaigia darba , pries mirti iraso 
+        //duomenis i faila.
     }
 /*************************************************************************************************************************/
     public function readData() //:array 
@@ -41,7 +44,7 @@ class Json {
             file_put_contents(DIR.'/data/id.json', $pos);
         }
         $pos = file_get_contents(DIR.'/data/id.json');
-        $pos = json_decode($pos, 1   );
+        $pos = json_decode($pos, 1);
         $id = (int) $pos['id'];
         $pos['id'] = $id + 1;
         $pos = json_encode($pos);
@@ -56,8 +59,8 @@ class Json {
     }
     public function update(object $useris) : void {
         foreach($this -> data as $key => $user) { //prasibegu pro visus userius
-            if($user -> uniqID == $useris -> uniqID) {  //
-                $this -> data[$key] = $useris; // CHECK THIS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+            if($user -> uniqID == $useris -> uniqID) {  
+                $this -> data[$key] = $useris; 
                 return;
             }
         }
@@ -69,8 +72,8 @@ class Json {
         }
         foreach($this -> data as $key => $user) { //prasibegu pro visus userius
             if($user['uniqID'] == $id) {  //jeigu radau reikiama
-                $count = ifFloat($count);  //suroundinu skaiciu
-                $user['balance'] -= $count;  // pridedu reiksme prie esamos
+                $count = ifFloat($count);  //suroundinu gauta skaiciu
+                $user['balance'] -= $count;  // atimu reiksme nuo esamo balanso
                 $this -> data[$key] = $user; 
                 return;
             }
@@ -100,7 +103,7 @@ class Json {
     public function accountExist() {
         $users = $this -> data;
         $accID = $this -> generateAcc();
-        if(!empty(DIR.'/data/users.json') && $users !== []) { //jeigu failas yra
+        if(!empty(DIR.'/data/users.json') && $users != []) { //jeigu failas yra ir nera tuscias
             $isNotUniqueID = true;
             do{
                 $accID = $this -> generateAcc(); // priskiriu saskaita
@@ -118,18 +121,6 @@ class Json {
             return $accID;
         }
     }
-    function notZero(int $id) : bool {
-        $notZero = false;
-        $data = readData();
-    foreach($data as $user){
-        if($user['uniqID'] == $id) {
-            if($user['balance'] != 0) {
-                $notZero = true;
-                break;
-            }
-        }
-    } return $notZero;
-    }
     public function isIDmatch($id) {
         $goodID = false;
         $pattern = "/^[3-6](\d{2})(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{4}$/";
@@ -139,12 +130,13 @@ class Json {
         return $goodID;
     }
     public function ifFloat($number) {
-        if(str_contains($number,'.')) {
-        $num = strval($number);
-        $arr = explode('.', $num);
-        _d($arr[1]);
-        _d(strlen($arr[1]));
-        if(strlen($arr[1]) > 2) {
+        if(str_contains($number,'.')) { //jeigu yra taskas(kablelis)
+        $num = strval($number); //paverciu i stringa
+        $arr = explode('.', $num); //padalinu per kableli
+        if(isset($arr[2])) { //jei prideda daugiau negu vienas kablelis
+            return null;
+        }
+        if(strlen($arr[1]) > 2)  {
             $number = round($number, 2);
             return $number;
         }else {

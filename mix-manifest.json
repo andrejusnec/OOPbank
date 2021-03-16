@@ -1,4 +1,5 @@
 {
+    "/public/css/variables.css": "/public/css/variables.css",
     "/public/css/custom.css": "/public/css/custom.css",
     "/public/css/app.css": "/public/css/app.css"
 }

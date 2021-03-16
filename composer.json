@@ -1,0 +1,17 @@
+{
+    "name": "kilgo/oo-pbank",
+    "authors": [
+        {
+            "name": "andrejusnec",
+            "email": "73877307+andrejusnec@users.noreply.github.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Bank\\": "app",
+            "Vartotojas\\": "app",
+            "\\":"/"
+        }
+    }
+}
