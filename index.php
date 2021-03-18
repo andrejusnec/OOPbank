@@ -7,6 +7,8 @@ $uri = explode('/', str_replace(INSTALL_DIR, '', $_SERVER['REQUEST_URI']));
 // ROUTING'AS
 if('' == $uri[0]) {
     (new Bank\UserController) ->index();
+    $_SESSION['usdCurrency'] = (new Bank\UserController) ->currency();
+
 } else if('create' == $uri[0]) {
     (new Bank\UserController) ->create();
 } else if('store' == $uri[0]) {
@@ -37,4 +39,5 @@ if('' == $uri[0]) {
 }else if('withdraw' == $uri[0]) { 
     (new Bank\UserController) ->withdraw((int) $uri[1]); //update
 }
+/**************************************************************** */
 ?>
