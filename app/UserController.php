@@ -158,4 +158,14 @@ class UserController
             return false;
     }
 }
+/**************************************************CURRENCY*****************************************************/
+public function currency(){
+  $currObj = new Currency;
+  $currObj -> getCurrExchange(); //parsisiuncia data ir iraso i json faila;
+  $currYouWant = 'USD';
+  $rez = $currObj -> getCurrency($currYouWant);
+  $rezArr[0] = $rez; 
+  $rezArr[1] = $currYouWant;
+  return $rezArr;
+}
 }

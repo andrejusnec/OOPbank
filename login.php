@@ -47,8 +47,8 @@ integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOn
 </head>
 <body class="bg">
 <div class="topnav">
-  <a class="active" href="<?= URL ?>account.php">Log in</a>
-  <a href="<?= URL ?>addFunds.php">Register</a>
+  <a class="active" href="<?= URL ?>login.php">Log in</a>
+  <a href="<?= URL ?>register.php">Register</a>
   <div style="float:right">
       <a href="<?= URL ?>bank.php">TESO BANK</a>
       <img class="logo" src="./img/eso.webp" alt="alt">

@@ -55,7 +55,7 @@ class Json {
     public function addUser(User $user) : void{ //Box $name,Box $surname, Box $accID, Box $personalID
         $id = $this -> getCurrentPos();    // pasiemu esama laisva pozicija per metoda
         $user -> uniqID = (int) $id;
-        $this -> data[] = $user;
+        $this -> data[] = $user;   //+
     }
     public function update(object $useris) : void {
         foreach($this -> data as $key => $user) { //prasibegu pro visus userius
