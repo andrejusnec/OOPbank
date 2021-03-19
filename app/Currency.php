@@ -16,7 +16,6 @@ namespace Bank;
             $rez = curl_exec($curl);
             $rez = json_decode($rez);
             curl_close($curl);
-            //$this -> data = $rez;
             $this -> writeData($rez);
         }
         public function writeData($rez) {
