@@ -24,9 +24,9 @@ class UserController
             header('Location: '.URL.'create');
             die;
             }
-        if($this -> validation($_POST['name']) && $this -> validation($_POST['surname'])){
-            $user->name = $_POST['name'];
-            $user->surname = $_POST['surname'];
+        if($user -> validation($_POST['name']) && $user -> validation($_POST['surname'])){
+            $user->setName($_POST['name']);
+            $user->setSurname($_POST['surname']);
         } else {
             $pageTitle = 'ERROR';
             $errorMsg = '<h3 class="errorMsg">You have enter a bad name or surname</h3>';
@@ -39,9 +39,9 @@ class UserController
             unset($_SESSION['readonly']);
         }
         //users Identification
-        if(Json::getDB() -> isIdUniq($_POST['idNumber'])) {
-            if(Json::getDB() -> isIDmatch($_POST['idNumber']) && Json::getDB() -> chechID($_POST['idNumber'])){
-                $user->idNumber = $_POST['idNumber'];
+        if($user -> isIdUniq($_POST['idNumber'])) {
+            if($user -> finalCheckID($_POST['idNumber'])){
+                $user->setIdNumber($_POST['idNumber']);
                 $_SESSION['success'] = '<div class="MMmsg">Account successfully created <i class="fa fa-check" aria-hidden="true"></i></div>';
             } else {
                 $pageTitle = 'ERROR';
@@ -55,7 +55,7 @@ class UserController
             require DIR . '/viewPage/create.php';
             die;
         }
-            Json::getDB()->addUser($user);
+            $user->addUser($user);
             header('Location: ' . URL);
             die;
         }
@@ -70,26 +70,7 @@ class UserController
             die;
         }
     }
-    public function addFunds(int $id)
-    {
-        if(!isset($_POST['funds'])) {
-            require DIR . '/viewPage/addFunds.php';
-            die;
-        }
-        $user = Json::getDB()->getUser($id);
-        if($_POST['funds'] > 0 && $_POST['funds'] < 100000000){
-        $user->balance += round((float) $_POST['funds'], 2);
-        Json::getDB()->update($user);
-        $_SESSION['success'] = '<div class="MMmsg">'.$_POST['funds'].' EUR were successfully added to ID # '.$user-> uniqID.' account <i class="fa fa-check" aria-hidden="true"></i></div>';
-        header('Location: ' . URL);
-        die;
-        } else {
-            $pageTitle = 'ERROR';
-            $errorMsg = '<h3 class="errorMsg">You have entered invalid amount.<br>Try again</h3>';
-            require DIR . '/viewPage/addFunds.php';
-            die;
-        }
-    }public function edit2(int $id)
+    public function edit2(int $id)
     {   if(!$id == null) {
         $pageTitle = 'Withdraw funds';
         $user = Json::getDB()->getUser($id);
@@ -99,35 +80,6 @@ class UserController
             require DIR . '/viewPage/msg.php';
             die;
         }
-    }
-    public function withdraw(int $id)
-    {  
-    $user = Json::getDB()->getUser($id);
-    if(!isset($_POST['funds'])) {
-        require DIR . '/viewPage/withdraw.php';
-        die;
-    }
-    if(is_numeric($_POST['funds'])) {
-        $number = Json::getDB() -> ifFloat($_POST['funds']);
-        if($user->balance < $number  || $number <= 0) {
-            $pageTitle = 'ERROR';
-            $errorMsg = '<h3 class="errorMsg">You have entered invalid amount.<br>Try again</h3>';
-            require DIR . '/viewPage/withdraw.php';
-            die;
-        }else {
-        $user->balance -= $number;
-        $user->balance = round($user->balance, 2);
-        Json::getDB()->update($user);
-        $_SESSION['success'] = '<div class="MMmsg">'.$_POST['funds'].' EUR were successfully withdrawn from ID # '.$user-> uniqID.' account <i class="fa fa-check" aria-hidden="true"></i></div>';
-        header('Location: ' . URL);
-        die;
-        }
-    } else {
-        $pageTitle = 'ERROR';
-        $errorMsg = '<h3 class="errorMsg">You\'re entry isn\'t a number.<br>Try again</h3>';
-        require DIR . '/viewPage/withdraw.php';
-        die;
-    }
     }
     public function deleteUser(int $id)
     {
@@ -150,15 +102,8 @@ class UserController
             die;
         }
     }
-    public static function validation($name) :bool {
-        $rexSafety = "([a-zA-Z]{3,30}\s*)";
-        if(preg_match($rexSafety, $name) && strlen($name) <= 30){
-            return true;
-        } else {
-            return false;
-    }
-}
 /**************************************************CURRENCY*****************************************************/
+/*
 public function currency(){
   $currObj = new Currency;
   $currObj -> getCurrExchange(); //parsisiuncia data ir iraso i json faila;
@@ -167,5 +112,15 @@ public function currency(){
   $rezArr[0] = $rez; 
   $rezArr[1] = $currYouWant;
   return $rezArr;
+}
+*/
+
+
+public function checkCache($curr) {
+    $cache = new Currency;
+    $cache -> oneTimeScen();
+    $cache -> currencyUpd(); // return $rez = $cache -> currencyUpd();
+    $value = $cache -> getCurrency($curr);
+    return $value;
 }
 }
