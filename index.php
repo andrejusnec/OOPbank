@@ -6,8 +6,10 @@ $uri = explode('/', str_replace(INSTALL_DIR, '', $_SERVER['REQUEST_URI']));
 
 // ROUTING'AS
 if('' == $uri[0]) {
+    $val = 'USD';
+    $_SESSION['Currency'][0] = (new Bank\UserController) ->checkCache($val);
+    $_SESSION['Currency'][1] = $val;
     (new Bank\UserController) ->index();
-    $_SESSION['usdCurrency'] = (new Bank\UserController) ->currency();
 
 } else if('create' == $uri[0]) {
     (new Bank\UserController) ->create();
@@ -21,7 +23,7 @@ if('' == $uri[0]) {
         (new Bank\UserController) ->edit((int) $uri[1]); 
     }
 } else if('addFunds' == $uri[0]) {
-    (new Bank\UserController) ->addFunds((int) $uri[1]); //update
+    (new Bank\Account) ->addFunds((int) $uri[1]);
 }else if('delete' == $uri[0]) { 
     if(isset($uri[1])){
         (new Bank\UserController) ->deleteUser((int) $uri[1]); 
@@ -37,7 +39,8 @@ if('' == $uri[0]) {
             (new Bank\UserController) ->edit((int) $uri[1]); 
         }
 }else if('withdraw' == $uri[0]) { 
-    (new Bank\UserController) ->withdraw((int) $uri[1]); //update
+    (new Bank\Account) ->withdraw((int) $uri[1]);
+
 }
 /**************************************************************** */
 ?>

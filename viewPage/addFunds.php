@@ -9,7 +9,7 @@
     unset($pageTitle);
 }
 ?>
-<h1><?= $user -> name.' '.$user -> surname ?></h1>
+<h1><?= $user ->name.' '.$user -> surname ?></h1>
 <h3 style="margin-bottom:20px">Account's ID# <?= $user -> uniqID ?> <br> Current balance: <?= $user -> balance ?> EUR</h3>
 <form action="<?= URL ?>addFunds/<?= $user -> uniqID ?>" method="post">
   <div class="input-group mb-3">

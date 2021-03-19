@@ -1,10 +1,12 @@
-@font-face {
-  font-family: "Nanum Gothic";
-  font-style: normal;
-  font-weight: 400;
-  src: local(""), url(/fonts/nanum-gothic-v17-latin-regular.woff2?1f9747b5bf6fbea9b17ff86e14704615) format("woff2"), url(/fonts/nanum-gothic-v17-latin-regular.woff?8274a2e8146b3ffbaa035be67a6ab0cc) format("woff");
-  font-display: swap;
-}
+/*@font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('../../fonts/nanum-gothic-v17-latin-regular.woff2') format('woff2'), 
+         url('../../fonts/nanum-gothic-v17-latin-regular.woff') format('woff'); 
+         font-display: swap;         
+  } */
 html, body {
   width: 100%;
   height: 100%;

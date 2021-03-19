@@ -26,22 +26,22 @@
     return $user1 -> surname <=> $user2 -> surname;
 });
   foreach($users as $user) {
-    $balanceCurr = $_SESSION['usdCurrency'][0] * $user -> balance; 
+    $balanceCurr = $_SESSION['Currency'][0] * $user -> balance; 
     $balanceCurr = round($balanceCurr, 2);
-    $curr = $_SESSION['usdCurrency'][1];
+    $curr = $_SESSION['Currency'][1];
       echo '<tr>
       <th scope="row">'.$user -> uniqID.'</th>
       <td>'.$user -> accId."</td>
-      <td>".$user -> name."</td>
+      <td>".$user ->name."</td>
       <td>".$user -> surname."</td>
-      <td>".$user -> balance." EUR<br>(".$balanceCurr." ".$curr.")</td>
+      <td>".$user -> balance." EUR<br>(".$balanceCurr." ".$curr.")</td> 
       <td><a class=\"btn btn-primary\" href=\"edit2/".$user -> uniqID."\" role=\"button\">Withdraw funds</a></td>
       <td><a class=\"btn btn-primary\" href=\"edit/".$user -> uniqID."\" role=\"button\">Add Funds</a></td>
       <td><form action=\"delete/".$user -> uniqID."\" method=\"post\">
       <button type=\"submit\" class=\"btn btn-primary\">Delete Account</button></form></td>
     </tr>" ;
   }
-  unset($_SESSION['usdCurrency']);
+  unset($_SESSION['Currency']);
    ?>
   </tbody>
 </table>
