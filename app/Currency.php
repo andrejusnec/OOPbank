@@ -32,15 +32,12 @@ namespace Bank;
                 $rez = curl_exec($curl);
                 curl_close($curl);
                 $rez = json_decode($rez);
-                $type = 'API';
                 $this -> writeData($rez);
             } else {
                 $type = 'CACHE';
                 $rez = $cache->data;
                 }
-                $rezArr[0] = $rez; 
-                $rezArr[1] = $type;
-                return $rezArr;
+                // return $rez;
         }
     }
 
